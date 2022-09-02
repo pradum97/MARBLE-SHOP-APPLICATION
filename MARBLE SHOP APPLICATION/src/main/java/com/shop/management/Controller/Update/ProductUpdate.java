@@ -175,6 +175,10 @@ public class ProductUpdate implements Initializable {
 
     private void setCategory() {
 
+        if (null != categoryList){
+            categoryList.clear();
+        }
+
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

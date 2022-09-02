@@ -27,7 +27,6 @@ public class Main extends Application {
         stage.show();
     }
     public void changeScene(String fxml, String title) {
-
         try {
             if (null != primaryStage && primaryStage.isShowing()) {
                 Parent pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));

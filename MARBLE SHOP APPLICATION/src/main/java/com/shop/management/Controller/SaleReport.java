@@ -35,7 +35,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class SaleReport implements Initializable {
-
     int rowsPerPage = 15;
 
     public TableColumn<Sale_Main, Integer> col_sno;
@@ -419,9 +418,7 @@ public class SaleReport implements Initializable {
         customColumn(colDate);
     }
     private void convertDateFormat(DatePicker... date) {
-
         for (DatePicker datePicker : date) {
-
             datePicker.setConverter(new StringConverter<>() {
 
                 private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -442,8 +439,6 @@ public class SaleReport implements Initializable {
                 }
             });
         }
-
-
     }
 
     public void searchReportBn(ActionEvent event) {

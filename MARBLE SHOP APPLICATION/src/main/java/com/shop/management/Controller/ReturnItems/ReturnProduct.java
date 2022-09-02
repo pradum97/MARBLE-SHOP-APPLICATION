@@ -412,6 +412,7 @@ public class ReturnProduct implements Initializable {
 
                 }
             }
+
             if (res > 0) {
                 connection.commit();
                 customDialog.showAlertBox("Success", "Successfully Returned");

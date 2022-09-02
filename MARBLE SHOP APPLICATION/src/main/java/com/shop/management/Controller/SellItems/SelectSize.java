@@ -126,8 +126,8 @@ public class SelectSize implements Initializable {
                 } else {
 
                     Label selectBn = new Label("SELECT");
-
-                    selectBn.setStyle("-fx-background-color: #0881ea;" + "-fx-padding: 5 15 5 15 ; -fx-background-radius: 30; -fx-text-fill: white; " + "-fx-alignment: center;-fx-cursor: hand");
+                    selectBn.setStyle("-fx-background-color: #0881ea;" + "-fx-padding: 5 15 5 15 ; -fx-background-radius: 30; " +
+                            "-fx-text-fill: white; " + "-fx-alignment: center;-fx-cursor: hand");
 
                     selectBn.setOnMouseClicked(event -> {
                         Stock stock = tableView.getSelectionModel().getSelectedItem();

@@ -412,7 +412,7 @@ public class Cart implements Initializable {
                         }
 
                         Main.primaryStage.setUserData(cartModel);
-                        customDialog.showFxmlDialog2("sellitems/cartQuantityUpdate.fxml", "");
+                        customDialog.showFxmlDialog2("sellItems/cartQuantityUpdate.fxml", "");
                         refresh();
                         cartTableView.refresh();
                     });
@@ -577,7 +577,6 @@ public class Cart implements Initializable {
             refresh();
         }
     }
-
     private void refresh() {
         getCart();
     }
