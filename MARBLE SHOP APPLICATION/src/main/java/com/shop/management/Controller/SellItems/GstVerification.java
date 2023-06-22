@@ -8,7 +8,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;

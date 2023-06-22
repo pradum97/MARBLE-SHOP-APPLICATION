@@ -56,15 +56,13 @@ public class AllProducts implements Initializable {
     public TextField searchTf;
     public Pagination pagination;
     public Button bnDeleteAll;
-
-
     private DBConnection dbconnection;
     private Method method;
     private CustomDialog customDialog;
 
-    FilteredList<Products> filteredData;
+    private FilteredList<Products> filteredData;
 
-    ObservableList<Products> productsList = FXCollections.observableArrayList();
+    private ObservableList<Products> productsList = FXCollections.observableArrayList();
 
 
     @Override

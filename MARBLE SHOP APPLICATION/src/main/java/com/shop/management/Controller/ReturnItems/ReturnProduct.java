@@ -77,6 +77,7 @@ public class ReturnProduct implements Initializable {
         method = new Method();
         dbConnection = new DBConnection();
         customDialog = new CustomDialog();
+        bnSubmit.setDisable(true);
         PropertiesLoader propLoader = new PropertiesLoader();
         propUpdate = propLoader.getUpdateProp();
         propRead = propLoader.getReadProp();
@@ -284,6 +285,7 @@ public class ReturnProduct implements Initializable {
         if (!itemList.isEmpty()) {
             itemList.clear();
         }
+
 
         calculate();
 

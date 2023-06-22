@@ -72,7 +72,6 @@ public class Cart implements Initializable {
     private double gstPrice = 0;
     private double totTaxable = 0;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         method = new Method();
@@ -305,7 +304,7 @@ public class Cart implements Initializable {
                 cartList.add(new CartModel(cartId, productId, stockID, discountId, taxId, sellerId, productName, product_type,
                         productCategory, purchasePrice, productMRP, minSellPrice, sellingPrice, height, width,
                         sizeUnit, quantityUnit, totalDisStr, totalGstPer, quantity, productColor, discount_name,
-                        disAmount, hsn_sac, Math.round(netAmount), gstAmount, sgst, cgst, igst, taxStr, discountPer , priceType , pcsPerPkt));
+                        disAmount, hsn_sac, Math.round(netAmount), gstAmount, sgst, cgst, igst, taxStr, discountPer, priceType, pcsPerPkt));
 
                 subTotAmount += amountAsPerMrp;
                 discountPrice += disAmount;
@@ -567,7 +566,7 @@ public class Cart implements Initializable {
 
             DBConnection.closeConnection(con, null, null);
             try {
-                if (null != ps){
+                if (null != ps) {
                     ps.close();
                 }
 
@@ -577,6 +576,7 @@ public class Cart implements Initializable {
             refresh();
         }
     }
+
     private void refresh() {
         getCart();
     }
@@ -725,6 +725,7 @@ public class Cart implements Initializable {
             }
         }
     }
+
     private void addSaleItem(int customerId, String billingType,
                              double receivedAmountD, ActionEvent event, Map<String, Object> receiveMap)
             throws SQLException {
@@ -732,7 +733,8 @@ public class Cart implements Initializable {
         double additionalDisc = 0;
         try {
             additionalDisc = Double.parseDouble(addDiscTF.getText());
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
 
         String paytmModeS = paymentModeC.getSelectionModel().getSelectedItem();
         double duesAmtD = 0, paidAmount = 0;
@@ -770,7 +772,8 @@ public class Cart implements Initializable {
         double addiDisc = 0;
         try {
             addiDisc = Double.parseDouble(addDiscTF.getText());
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
 
         try {
             String saleMainQuery = "INSERT INTO tbl_sale_main(CUSTOMER_ID, SELLER_ID, ADDITIONAL_DISCOUNT, RECEIVED_AMOUNT," +
@@ -828,10 +831,10 @@ public class Cart implements Initializable {
 
                         String quantityUnit = model.getFullQuantity().split(" -")[1];
                         int q = Integer.parseInt(model.getFullQuantity().split(" -")[0]);
-                        int qty ;
-                        if (quantityUnit.equals("PKT")){
-                            qty = (q*model.getPcsPerPacket());
-                        }else {
+                        int qty;
+                        if (quantityUnit.equals("PKT")) {
+                            qty = (q * model.getPcsPerPacket());
+                        } else {
                             qty = q;
                         }
                         res = 0;

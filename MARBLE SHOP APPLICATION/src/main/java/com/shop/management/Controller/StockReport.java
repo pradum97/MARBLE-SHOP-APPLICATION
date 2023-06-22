@@ -3,7 +3,6 @@ package com.shop.management.Controller;
 import com.shop.management.CustomDialog;
 import com.shop.management.ImageLoader;
 import com.shop.management.Main;
-import com.shop.management.Method.Method;
 import com.shop.management.Method.StaticData;
 import com.shop.management.Model.StockMainModel;
 import com.shop.management.util.DBConnection;

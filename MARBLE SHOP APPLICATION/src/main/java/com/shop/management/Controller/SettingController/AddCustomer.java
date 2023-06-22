@@ -77,7 +77,7 @@ public class AddCustomer implements Initializable {
 
     public void enterPress(KeyEvent event) {
 
-        if (event.getCode() == KeyCode.ENTER){
+        if (event.getCode() == KeyCode.ENTER) {
             add(event.getSource());
         }
     }

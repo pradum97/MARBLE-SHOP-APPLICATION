@@ -1,8 +1,6 @@
 package com.shop.management.Controller.SellItems;
 
-import com.shop.management.CustomDialog;
 import com.shop.management.Main;
-import com.shop.management.Method.Method;
 import com.shop.management.Model.SaleItems;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.DBConnection;
@@ -47,7 +45,7 @@ public class ViewSellItems implements Initializable {
     private DBConnection dbConnection;
     private int sale_main_id = 0;
     private Properties propRead;
-    ObservableList<SaleItems> reportList = FXCollections.observableArrayList();
+    private ObservableList<SaleItems> reportList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,19 +103,19 @@ public class ViewSellItems implements Initializable {
                 String saleDate = rs.getString("sale_date");
 
                 String discountName;
-                if (null == discName || discName.isEmpty()){
+                if (null == discName || discName.isEmpty()) {
                     discountName = "-";
-                }else {
+                } else {
                     discountName = discName;
                 }
 
                 String priceType = rs.getString("price_type");
                 String fullDiscount = discountAmount + " ( " + rs.getString("discountPer") + " % )";
                 int tax = igst + cgst + sgst;
-                String sellRate = sellPrice+" / "+priceType;
+                String sellRate = sellPrice + " / " + priceType;
 
                 reportList.add(new SaleItems(saleItemId, productId, stockId, productName, productColor, productSize, productType, productCategory, purchasePrice, productMrp,
-                        discountAmount, taxAmount, netAmount, discountName, quantity , hsn, tax, igst, cgst, sgst, saleDate, fullDiscount , sellRate));
+                        discountAmount, taxAmount, netAmount, discountName, quantity, hsn, tax, igst, cgst, sgst, saleDate, fullDiscount, sellRate));
 
             }
             if (null != reportList) {

@@ -56,7 +56,8 @@ public class SaleProduct implements Initializable {
     private DBConnection dbconnection;
     private CustomDialog customDialog;
     private ObservableList<Products> productsList = FXCollections.observableArrayList();
-    FilteredList<Products> filteredData;
+    private FilteredList<Products> filteredData;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -64,6 +65,7 @@ public class SaleProduct implements Initializable {
         customDialog = new CustomDialog();
         getProduct();
     }
+
     private void getProduct() {
 
         if (null != productsList) {
@@ -121,9 +123,9 @@ public class SaleProduct implements Initializable {
                 double cgst = rs.getInt("cgst");
                 double igst = rs.getInt("igst");
 
-                String size =rs.getString("height_width");
+                String size = rs.getString("height_width");
 
-                if (null == size){
+                if (null == size) {
                     size = "-";
                 }
 
@@ -150,6 +152,7 @@ public class SaleProduct implements Initializable {
         }
 
     }
+
     private void customColumn(TableColumn<Products, String> columnName) {
 
         columnName.setCellFactory(tc -> {
@@ -191,9 +194,9 @@ public class SaleProduct implements Initializable {
         }
         countCart();
 
-        if (Main.primaryStage.getUserData() instanceof Boolean){
+        if (Main.primaryStage.getUserData() instanceof Boolean) {
             boolean isSuccess = (boolean) Main.primaryStage.getUserData();
-            if (isSuccess){
+            if (isSuccess) {
                 searchTf.setText("");
                 bnRefresh(null);
             }
@@ -301,7 +304,7 @@ public class SaleProduct implements Initializable {
         tableView.setItems(sortedData);
 
 
-       setOptionalCell();
+        setOptionalCell();
 
 
         customColumn(colProductName);

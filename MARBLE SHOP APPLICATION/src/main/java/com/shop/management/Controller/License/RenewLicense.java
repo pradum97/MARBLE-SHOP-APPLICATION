@@ -6,7 +6,6 @@ import com.shop.management.Method.Method;
 import com.shop.management.Method.TimeFromOnline;
 import com.shop.management.util.DBConnection;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -51,9 +50,9 @@ public class RenewLicense implements Initializable {
     private CustomDialog customDialog;
     private String type = null;
     private DBConnection dbConnection;
-    Map<String, Object> map;
-    int availableDays;
-    String licenseType;
+    private Map<String, Object> map;
+    private int availableDays;
+    private String licenseType;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,6 +68,7 @@ public class RenewLicense implements Initializable {
         dbConnection = new DBConnection();
         getApplicationIdFromDb();
     }
+
     private void getApplicationIdFromDb() {
         Connection connection = null;
         PreparedStatement ps = null;
@@ -96,7 +96,9 @@ public class RenewLicense implements Initializable {
         } finally {
             DBConnection.closeConnection(connection, ps, rs);
         }
-    }public void activateBn(ActionEvent actionEvent) {
+    }
+
+    public void activateBn(ActionEvent actionEvent) {
 
         String applicationId = applicationIdTf.getText().replaceAll(" ", "");
         String serialKey = serialKeyTf.getText().replaceAll(" ", "");

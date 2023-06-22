@@ -60,7 +60,12 @@ public class Login implements Initializable {
     }
     private void getProfileDetails(ResultSet rs , PreparedStatement ps){
 
-        getLicenseData(rs , ps);
+        try {
+            openDashboard(rs, ps);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //  getLicenseData(rs , ps);
     }
 
     private void openDashboard(ResultSet rs , PreparedStatement ps) throws SQLException {

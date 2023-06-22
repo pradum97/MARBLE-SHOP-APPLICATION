@@ -4,9 +4,7 @@ import com.shop.management.CustomDialog;
 import com.shop.management.Main;
 import com.shop.management.Method.CountCartQty;
 import com.shop.management.Method.Method;
-import com.shop.management.Method.StaticData;
 import com.shop.management.Model.CartModel;
-import com.shop.management.Model.Stock;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.DBConnection;
 import javafx.event.ActionEvent;
@@ -18,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -45,7 +42,6 @@ public class CartQuantityUpdate implements Initializable {
     private int requiredQuantity;
     private long avlQty;
     private Properties propUpdate, propRead;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

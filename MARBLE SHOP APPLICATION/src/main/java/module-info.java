@@ -1,8 +1,6 @@
 module com.shop.management {
     requires javafx.controls;
     requires javafx.fxml;
-    requires com.dlsc.formsfx;
-    requires net.synedra.validatorfx;
     requires java.logging;
     requires java.sql;
     requires org.apache.commons.io;
@@ -14,9 +12,6 @@ module com.shop.management {
     requires org.apache.httpcomponents.httpmime;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
-
-
-
     exports com.shop.management;
 
     opens com.shop.management.Model to javafx.fxml;

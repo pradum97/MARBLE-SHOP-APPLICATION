@@ -12,7 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

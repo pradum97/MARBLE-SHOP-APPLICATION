@@ -4,7 +4,6 @@ import com.shop.management.Controller.Login;
 import com.shop.management.CustomDialog;
 import com.shop.management.Main;
 import com.shop.management.Method.GetStockData;
-import com.shop.management.Method.Method;
 import com.shop.management.Model.Products;
 import com.shop.management.Model.Quantity;
 import com.shop.management.Model.Stock;
@@ -26,7 +25,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 

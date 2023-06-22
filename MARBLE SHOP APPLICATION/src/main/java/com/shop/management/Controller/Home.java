@@ -44,7 +44,7 @@ public class Home implements Initializable {
     private DBConnection dbConnection;
     private DecimalFormat df = new DecimalFormat("0.##");
 
-    ObservableList<DailySaleReport> reportList = FXCollections.observableArrayList();
+    private ObservableList<DailySaleReport> reportList = FXCollections.observableArrayList();
 
 
     @Override

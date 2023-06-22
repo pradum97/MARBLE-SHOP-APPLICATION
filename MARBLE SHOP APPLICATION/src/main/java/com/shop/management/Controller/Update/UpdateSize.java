@@ -1,9 +1,7 @@
 package com.shop.management.Controller.Update;
 
 import com.shop.management.Controller.AddProducts;
-import com.shop.management.Controller.Login;
 import com.shop.management.CustomDialog;
-import com.shop.management.ImageLoader;
 import com.shop.management.Main;
 import com.shop.management.Method.Method;
 import com.shop.management.Method.StaticData;
@@ -11,15 +9,13 @@ import com.shop.management.Model.Stock;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.DBConnection;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.math.BigDecimal;
@@ -28,8 +24,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Optional;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class UpdateSize implements Initializable {

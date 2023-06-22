@@ -34,7 +34,6 @@ import java.util.ResourceBundle;
 
 public class Category implements Initializable
 {
-
     private int rowsPerPage = 8;
     public Pagination pagination;
     public TextField categoryNameTF;

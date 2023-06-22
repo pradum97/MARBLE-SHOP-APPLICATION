@@ -37,7 +37,6 @@ public class FeedbackDialog implements Initializable {
     private CustomDialog customDialog;
     private Method method;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         method = new Method();
@@ -45,7 +44,7 @@ public class FeedbackDialog implements Initializable {
         customDialog = new CustomDialog();
         rate.setRating(4);
 
-        titleL.setText("we want to know what you thought of your experience at "+ AppConfig.COMPANY_NAME +" so we'd love to here you feedback");
+        titleL.setText("we want to know what you thought of your experience at " + AppConfig.COMPANY_NAME + " so we'd love to here you feedback");
 
 
     }

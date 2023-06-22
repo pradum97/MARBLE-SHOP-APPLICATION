@@ -1,6 +1,5 @@
 package com.shop.management.Controller.SellItems;
 
-import com.shop.management.CustomDialog;
 import com.shop.management.Main;
 import com.shop.management.Method.CountCartQty;
 import com.shop.management.Method.Method;
@@ -9,8 +8,6 @@ import com.shop.management.Model.Quantity;
 import com.shop.management.Model.Stock;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.DBConnection;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class CustomDialog {
-
     public static Stage stage;
     public static Stage stage2;
     public static Stage stage3;

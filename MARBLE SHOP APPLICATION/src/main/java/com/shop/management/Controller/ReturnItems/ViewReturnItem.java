@@ -2,7 +2,6 @@ package com.shop.management.Controller.ReturnItems;
 
 import com.shop.management.CustomDialog;
 import com.shop.management.Main;
-import com.shop.management.Method.Method;
 import com.shop.management.Model.Return_ItemsModel;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.DBConnection;

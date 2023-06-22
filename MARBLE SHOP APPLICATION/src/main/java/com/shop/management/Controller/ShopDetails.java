@@ -2,7 +2,6 @@ package com.shop.management.Controller;
 
 import com.shop.management.CustomDialog;
 import com.shop.management.Main;
-import com.shop.management.Method.Method;
 import com.shop.management.Model.Shop;
 import com.shop.management.util.DBConnection;
 import javafx.event.ActionEvent;

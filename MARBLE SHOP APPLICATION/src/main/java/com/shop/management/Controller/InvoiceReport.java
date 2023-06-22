@@ -1,6 +1,5 @@
 package com.shop.management.Controller;
 
-import com.shop.management.CustomDialog;
 import com.shop.management.ImageLoader;
 import com.shop.management.Main;
 import com.shop.management.Method.GenerateInvoice;
@@ -13,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

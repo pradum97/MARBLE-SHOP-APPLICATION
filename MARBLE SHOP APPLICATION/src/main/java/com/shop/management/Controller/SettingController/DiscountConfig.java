@@ -41,8 +41,6 @@ public class DiscountConfig implements Initializable {
     public TableColumn<Discount, String> colDiscountDes;
     public TableColumn<Discount, String> colDiscountName;
     public Pagination pagination;
-
-
     private Method method;
     private DBConnection dbConnection;
     private CustomDialog customDialog;

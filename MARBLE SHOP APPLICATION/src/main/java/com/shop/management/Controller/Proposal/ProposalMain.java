@@ -5,7 +5,6 @@ import com.shop.management.CustomDialog;
 import com.shop.management.ImageLoader;
 import com.shop.management.Main;
 import com.shop.management.Method.GenerateInvoice;
-import com.shop.management.Model.Products;
 import com.shop.management.Model.ProposalMainModel;
 import com.shop.management.PropertiesLoader;
 import com.shop.management.util.AppConfig;
@@ -16,55 +15,46 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProposalMain implements Initializable {
-    public TableColumn<ProposalMainModel,String> colAction;
-    private  int rowsPerPage = 15;
+    public TableColumn<ProposalMainModel, String> colAction;
+    private int rowsPerPage = 15;
     public TextField searchTf;
     public TableView<ProposalMainModel> tableView;
-    public TableColumn<ProposalMainModel , Integer> colSrNo;
-    public TableColumn<ProposalMainModel,String> colCname;
-    public TableColumn<ProposalMainModel,String> colPhone;
-    public TableColumn<ProposalMainModel,String> cAddress;
-    public TableColumn<ProposalMainModel,String> cDate;
-    public TableColumn<ProposalMainModel,String> colItems;
-    public TableColumn<ProposalMainModel,String> cInvoice;
+    public TableColumn<ProposalMainModel, Integer> colSrNo;
+    public TableColumn<ProposalMainModel, String> colCname;
+    public TableColumn<ProposalMainModel, String> colPhone;
+    public TableColumn<ProposalMainModel, String> cAddress;
+    public TableColumn<ProposalMainModel, String> cDate;
+    public TableColumn<ProposalMainModel, String> colItems;
+    public TableColumn<ProposalMainModel, String> cInvoice;
     public Pagination pagination;
 
     private DBConnection dbConnection;
     private CustomDialog customDialog;
     private ObservableList<ProposalMainModel> proposeList = FXCollections.observableArrayList();
-    FilteredList<ProposalMainModel> filteredData;
+    private FilteredList<ProposalMainModel> filteredData;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,7 +65,7 @@ public class ProposalMain implements Initializable {
     }
 
     private void getProposalItem() {
-        if (null != proposeList){
+        if (null != proposeList) {
             proposeList.clear();
         }
 
@@ -85,7 +75,7 @@ public class ProposalMain implements Initializable {
 
         try {
             connection = dbConnection.getConnection();
-            if (null == connection){
+            if (null == connection) {
                 return;
             }
 
@@ -98,7 +88,7 @@ public class ProposalMain implements Initializable {
 
             rs = ps.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
 
                 int proposalMainId = rs.getInt("proposal_main_id");
 
@@ -108,7 +98,7 @@ public class ProposalMain implements Initializable {
                 String invoiceNum = rs.getString("invoice_num");
                 String proposalDate = rs.getString("proposalDate");
 
-                proposeList.add(new ProposalMainModel(proposalMainId,cusName,cusPhone,cusAddress,invoiceNum,proposalDate));
+                proposeList.add(new ProposalMainModel(proposalMainId, cusName, cusPhone, cusAddress, invoiceNum, proposalDate));
             }
 
             if (proposeList.size() > 0) {
@@ -119,10 +109,11 @@ public class ProposalMain implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            DBConnection.closeConnection(connection , ps , rs);
+        } finally {
+            DBConnection.closeConnection(connection, ps, rs);
         }
     }
+
     public void refresh(ActionEvent event) {
         getProposalItem();
         changeTableView(pagination.getCurrentPageIndex(), rowsPerPage);
@@ -161,7 +152,7 @@ public class ProposalMain implements Initializable {
     }
 
     private void changeTableView(int index, int limit) {
-        if (null == filteredData){
+        if (null == filteredData) {
             return;
         }
 
@@ -244,11 +235,11 @@ public class ProposalMain implements Initializable {
                                 ps = connection.prepareStatement("select count(cart_id) from tbl_cart");
                                 rs = ps.executeQuery();
 
-                                while (rs.next()){
+                                while (rs.next()) {
 
                                     int count = rs.getInt(1);
 
-                                    if (count < 1){
+                                    if (count < 1) {
 
                                         ps = null;
                                         rs = null;
@@ -257,13 +248,13 @@ public class ProposalMain implements Initializable {
                                                 "left join proposal_main pm on pi.proposal_main_id = pm.proposal_main_id where pi.proposal_main_id = ?";
 
                                         ps = connection.prepareStatement(query);
-                                        ps.setInt(1,model.getProposalMainId());
+                                        ps.setInt(1, model.getProposalMainId());
 
                                         rs = ps.executeQuery();
 
                                         int res = 0;
 
-                                        while (rs.next()){
+                                        while (rs.next()) {
                                             res = 0;
 
                                             int productId = rs.getInt("product_id");
@@ -276,13 +267,13 @@ public class ProposalMain implements Initializable {
                                             ps = connection.prepareStatement(new PropertiesLoader().getInsertProp().getProperty("INSERT_CART_DETAILS"));
                                             ps.setInt(1, productId);
                                             ps.setInt(2, Login.currentlyLogin_Id);
-                                            ps.setDouble(3,rate);
+                                            ps.setDouble(3, rate);
                                             ps.setInt(4, stockId);
                                             ps.setDouble(5, quantity);
                                             ps.setString(6, qtyUnit);
                                             ps.setString(7, priceType);
 
-                                             res = ps.executeUpdate();
+                                            res = ps.executeUpdate();
                                         }
 
                                         if (res > 0) {
@@ -296,16 +287,15 @@ public class ProposalMain implements Initializable {
                                             viewCart();
                                         }
 
-                                    }else {
+                                    } else {
 
-                                        String msg  = "YOU CAN'T ADD TO THE CART BECAUSE OTHER PRODUCTS ALREADY EXIST! \n " +
+                                        String msg = "YOU CAN'T ADD TO THE CART BECAUSE OTHER PRODUCTS ALREADY EXIST! \n " +
                                                 "PLEASE GO ON THE CART.   AND SELL THE PRODUCT. OR CLEAR THE PRODUCT !";
 
-                                        customDialog.showAlertBox("Failed!",msg);
+                                        customDialog.showAlertBox("Failed!", msg);
 
                                     }
                                 }
-
 
 
                             } catch (SQLException e) {
@@ -324,11 +314,11 @@ public class ProposalMain implements Initializable {
                     checkItem.setOnMouseClicked(mouseEvent -> {
                         ProposalMainModel proposalMainModel = tableView.getSelectionModel().getSelectedItem();
                         Main.primaryStage.setUserData(proposalMainModel);
-                        customDialog.showFxmlFullDialog("proposal/proposalItems.fxml","ITEMS");
+                        customDialog.showFxmlFullDialog("proposal/proposalItems.fxml", "ITEMS");
                     });
 
 
-                    VBox managebtn = new VBox(saleNow ,checkItem);
+                    VBox managebtn = new VBox(saleNow, checkItem);
 
                     managebtn.setStyle("-fx-alignment:center");
                     VBox.setMargin(checkItem, new Insets(10, 10, 10, 15));
@@ -340,7 +330,6 @@ public class ProposalMain implements Initializable {
             }
 
         };
-
 
 
         Callback<TableColumn<ProposalMainModel, String>, TableCell<ProposalMainModel, String>>
@@ -406,7 +395,7 @@ public class ProposalMain implements Initializable {
                     });
 
 
-                    HBox managebtn = new HBox(ivDelete , bnPrint);
+                    HBox managebtn = new HBox(ivDelete, bnPrint);
 
                     managebtn.setStyle("-fx-alignment:center");
                     HBox.setMargin(bnPrint, new Insets(10, 10, 10, 15));
@@ -428,8 +417,8 @@ public class ProposalMain implements Initializable {
 
     private void deleteProposalItem(int proposalMainId) {
 
-        String  proposalItemDeleteQuery = "DELETE FROM proposal_items WHERE proposal_main_id = "+proposalMainId;
-        String proposalMainDeleteQuery = "DELETE FROM proposal_main WHERE proposal_main_id = "+proposalMainId;
+        String proposalItemDeleteQuery = "DELETE FROM proposal_items WHERE proposal_main_id = " + proposalMainId;
+        String proposalMainDeleteQuery = "DELETE FROM proposal_main WHERE proposal_main_id = " + proposalMainId;
 
         Connection connection = null;
         Statement statement = null;
@@ -437,7 +426,7 @@ public class ProposalMain implements Initializable {
         try {
 
             connection = dbConnection.getConnection();
-            if (null == connection){
+            if (null == connection) {
                 return;
             }
 
@@ -446,20 +435,20 @@ public class ProposalMain implements Initializable {
             statement.addBatch(proposalItemDeleteQuery);
             statement.addBatch(proposalMainDeleteQuery);
 
-          int[] res =  statement.executeBatch();
+            int[] res = statement.executeBatch();
 
-          if (res[0] > 0){
-              refresh(null);
-          }
+            if (res[0] > 0) {
+                refresh(null);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
 
-            DBConnection.closeConnection(connection , null , null);
+            DBConnection.closeConnection(connection, null, null);
 
             try {
-                if (null != statement){
+                if (null != statement) {
                     statement.close();
                 }
             } catch (SQLException e) {
@@ -467,6 +456,7 @@ public class ProposalMain implements Initializable {
             }
         }
     }
+
     private void customColumn(TableColumn<ProposalMainModel, String> columnName) {
 
         columnName.setCellFactory(tc -> {
@@ -484,10 +474,10 @@ public class ProposalMain implements Initializable {
 
     public void viewCart(ActionEvent event) {
 
-       viewCart();
+        viewCart();
     }
 
-    private void viewCart(){
+    private void viewCart() {
 
         try {
             Stage stage = new Stage();

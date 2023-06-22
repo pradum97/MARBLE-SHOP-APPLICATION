@@ -46,17 +46,18 @@ public class AddDiscount implements Initializable {
     public void submitBn(ActionEvent event) {
         addDiscount();
     }
+
     public void cancel(ActionEvent event) {
 
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        if (stage.isShowing()){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        if (stage.isShowing()) {
             stage.close();
         }
     }
 
     public void pressEnter(KeyEvent event) {
 
-        if (event.getCode() == KeyCode.ENTER){
+        if (event.getCode() == KeyCode.ENTER) {
             addDiscount();
         }
     }
